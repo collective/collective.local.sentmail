@@ -22,6 +22,7 @@ class TestTypes(unittest.TestCase, BaseTest):
         sent_mail = api.content.create(type='sent_mail',
                                        title=u'The email I have sent',
                                        body=u'Hey guys, How are you today?',
+                                       recipients=['lisa', 'bart'],
                                        container=self.folder)
 
     def test_sent_mail(self):
@@ -30,3 +31,5 @@ class TestTypes(unittest.TestCase, BaseTest):
         self.assertEqual(mymail.Title(), u'The email I have sent')
         self.assertEqual(mymail.Creator(), 'milhouse')
         self.assertEqual(mymail.body, u'Hey guys, How are you today?')
+        self.assertIn('lisa', mymail.recipients)
+        self.assertIn('bart', mymail.recipients)

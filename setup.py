@@ -45,6 +45,7 @@ setup(
         'plone.api',
         'plone.app.dexterity',
         'plone.app.textfield',
+        'plone.principalsource',
         'setuptools',
     ],
     extras_require={
