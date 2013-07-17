@@ -44,6 +44,7 @@ setup(
         'five.grok',
         'plone.api',
         'plone.app.dexterity',
+        'plone.app.textfield',
         'setuptools',
     ],
     extras_require={

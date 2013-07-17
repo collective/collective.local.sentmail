@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
 
+from plone.app.textfield import RichText
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
+
+from . import _
 
 
 class ICollectiveLocalSentmailLayer(IDefaultPloneLayer):
@@ -11,4 +14,8 @@ class ICollectiveLocalSentmailLayer(IDefaultPloneLayer):
 
 class ISentMail(model.Schema):
     """Schema for sent mail"""
-    pass
+
+    body = RichText(title=_(u"Body text"),
+                    default_mime_type='text/structured',
+                    output_mime_type='text/html',
+                    )
