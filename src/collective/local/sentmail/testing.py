@@ -14,7 +14,17 @@ from plone.testing import z2
 
 import unittest2 as unittest
 
+from ecreall.helpers.testing import member as memberhelpers
+
 import collective.local.sentmail
+
+
+USERDEFS = [{'user': 'bart', 'roles': ('Member', ), 'groups': ()},
+            {'user': 'lisa', 'roles': ('Member', ), 'groups': ()},
+            {'user': 'homer', 'roles': ('Member', ), 'groups': ()},
+            {'user': 'marge', 'roles': ('Member', ), 'groups': ()},
+            {'user': 'milhouse', 'roles': ('Member', 'Contributor'), 'groups': ()},
+            ]
 
 
 class CollectiveLocalSentmailLayer(PloneSandboxLayer):
@@ -32,6 +42,9 @@ class CollectiveLocalSentmailLayer(PloneSandboxLayer):
         """Set up Plone."""
         # Install into Plone site using portal_setup
         applyProfile(portal, 'collective.local.sentmail:default')
+
+        # create some users
+        memberhelpers.createMembers(portal, USERDEFS)
 
         # Login and create some test content
         setRoles(portal, TEST_USER_ID, ['Manager'])

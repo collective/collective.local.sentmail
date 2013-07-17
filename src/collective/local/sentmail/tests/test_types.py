@@ -17,9 +17,14 @@ class TestTypes(unittest.TestCase, BaseTest):
     def setUp(self):
         super(TestTypes, self).setUp()
         self.portal = self.layer['portal']
-        self.sent_mail = api.content.create(type='sent_mail',
-                                            title=u'The email I have sent',
-                                            container=self.portal)
+        self.folder = self.portal['folder']
+        self.login('milhouse')
+        sent_mail = api.content.create(type='sent_mail',
+                                       title=u'The email I have sent',
+                                       container=self.folder)
 
     def test_sent_mail(self):
-        self.assertIn('the-email-i-have-sent', self.portal)
+        self.assertIn('the-email-i-have-sent', self.folder)
+        mymail = self.folder['the-email-i-have-sent']
+        self.assertEqual(mymail.Title(), u'The email I have sent')
+        self.assertEqual(mymail.Creator(), 'milhouse')
