@@ -30,7 +30,7 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
     ],
-    keywords='email,sendto',
+    keywords='email,sendto,dexterity',
     author='Cédric Messiant',
     author_email='cedricmessiant@ecreall.com',
     url='http://pypi.python.org/pypi/collective.local.sentmail',
@@ -43,6 +43,7 @@ setup(
     install_requires=[
         'five.grok',
         'plone.api',
+        'plone.app.dexterity',
         'setuptools',
     ],
     extras_require={
