@@ -3,14 +3,14 @@
         meta_type="Dexterity FTI"
         i18n:domain="collective.local.sentmail"
         xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Sent mail</property>
+ <property name="title" i18n:translate="">Sent Mail</property>
  <property name="description" i18n:translate=""></property>
  <property name="icon_expr">string:${portal_url}/sent_mail_icon.png</property>
  <property name="factory">sent_mail</property>
  <property name="add_view_expr">string:${folder_url}/++add++sent_mail</property>
  <property name="link_target"></property>
  <property name="immediate_view" />
- <property name="global_allow">True</property>
+ <property name="global_allow">False</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types"/>
  <property name="allow_discussion">False</property>
