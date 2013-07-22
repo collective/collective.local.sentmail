@@ -19,7 +19,9 @@ from ecreall.helpers.testing import member as memberhelpers
 import collective.local.sentmail
 
 
-USERDEFS = [{'user': 'bart', 'roles': ('Member', ), 'groups': ()},
+USERDEFS = [{'user': 'admin', 'roles': ('Site Administrator', ), 'groups': ()},
+            {'user': 'manager', 'roles': ('Manager', ), 'groups': ()},
+            {'user': 'bart', 'roles': ('Member', ), 'groups': ()},
             {'user': 'lisa', 'roles': ('Member', ), 'groups': ()},
             {'user': 'homer', 'roles': ('Member', ), 'groups': ()},
             {'user': 'marge', 'roles': ('Member', ), 'groups': ()},
