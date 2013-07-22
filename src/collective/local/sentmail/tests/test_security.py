@@ -22,7 +22,7 @@ class TestSecurity(unittest.TestCase, BaseWorkflowTest):
     def setUp(self):
         super(TestSecurity, self).setUp()
         self.portal = self.layer['portal']
-        self.mails_folder = api.content.create(type="Folder",
+        self.mails_folder = api.content.create(type="sent_mails_folder",
                                                title=u"Sent mails",
                                                container=self.portal)
         self.sent_mail = api.content.create(type='sent_mail',
