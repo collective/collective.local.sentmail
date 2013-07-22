@@ -43,6 +43,7 @@ setup(
     install_requires=[
         'five.grok',
         'plone.api',
+        'plone.app.contenttypes',
         'plone.app.dexterity',
         'plone.app.textfield',
         'plone.principalsource',
