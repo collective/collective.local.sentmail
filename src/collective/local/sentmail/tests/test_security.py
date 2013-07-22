@@ -9,12 +9,14 @@ from collective.local.sentmail.testing import INTEGRATION, USERDEFS
 
 admins = ('admin', 'manager')
 members = ('bart', 'lisa', 'homer', 'marge', 'milhouse')
-SENT_MAIL_PERMISSIONS = {'Access contents information': members + admins,
-                         'Modify portal content': ('admin', 'manager'),
-                         'View': members + admins,
+everyone = members + admins
+creator = 'homer'
+
+SENT_MAIL_PERMISSIONS = {'Access contents information': admins + (creator,),
+                         'Modify portal content': admins,
+                         'View': admins + (creator,),
                          }
 
-everyone = members + admins
 SENT_MAILS_FOLDER_PERMISSIONS = {'Access contents information': everyone,
                                  'Add portal content': everyone,
                                  'Modify portal content': admins,
