@@ -43,7 +43,7 @@ class CollectiveLocalSentmailLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
-        applyProfile(portal, 'collective.local.sentmail:default')
+        applyProfile(portal, 'collective.local.sentmail:testing')
 
         # create some users
         memberhelpers.createMembers(portal, USERDEFS)
