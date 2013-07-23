@@ -15,6 +15,7 @@
     <include package="plone.app.dexterity" />
     <include package="plone.app.textfield" />
     <include package="plone.principalsource" />
+    <include package="collective.local.sendto" />
 
     <include package=".browser" />
     <include package=".content" />
