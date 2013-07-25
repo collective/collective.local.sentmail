@@ -35,6 +35,8 @@
         title="collective.local.sentmail post_install import step"
         description="Post install import step from collective.local.sentmail"
         handler=".setuphandlers.post_install">
+        <depends name="types"/>
+        <depends name="workflows"/>
     </genericsetup:importStep>
 
 </configure>
