@@ -20,6 +20,6 @@ class ISentMail(model.Schema):
                              value_type=schema.Choice(vocabulary='plone.principalsource.Principals'))
 
     body = RichText(title=_(u"Body text"),
-                    default_mime_type='text/structured',
+                    default_mime_type='text/html',
                     output_mime_type='text/html',
                     )
