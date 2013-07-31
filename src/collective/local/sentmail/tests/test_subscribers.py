@@ -5,6 +5,7 @@ import unittest2 as unittest
 from zope.event import notify
 
 from plone import api
+from plone.app.textfield.value import RichTextValue
 
 from ecreall.helpers.testing.base import BaseTest
 
@@ -30,13 +31,17 @@ class TestSubscribers(unittest.TestCase, BaseTest):
         homer = api.user.get('homer')
         self.login('lisa')
         event = MailSentEvent(subject=u"Mail subject",
-                              body=u"Mail body text",
+                              body=u"Mail <strong>body</strong> text",
                               recipients=[bart, homer])
         notify(event)
         self.assertIn('mail-subject', sent_mails_folder)
         mail = sent_mails_folder['mail-subject']
         self.assertEqual(u"Mail subject", mail.Title())
-        self.assertEqual(u"Mail body text", mail.body)
+        rich_text_body = RichTextValue(raw=u"Mail <strong>body</strong> text",
+                                       mimeType="text/html",
+                                       outputMimeType="text/x-html-safe",
+                                       encoding='utf-8')
+        self.assertEqual(rich_text_body.output, event.body)
         self.assertEqual('lisa', mail.Creator())
         self.assertIn('bart', mail.recipients)
         self.assertIn('homer', mail.recipients)
