@@ -21,5 +21,5 @@ class ISentMail(model.Schema):
 
     body = RichText(title=_(u"Body text"),
                     default_mime_type='text/html',
-                    output_mime_type='text/html',
+                    output_mime_type="text/x-html-safe",
                     )
