@@ -12,12 +12,12 @@
             <td class="name" i18n:translate="">From</td>
             <td class="value" tal:content="view/mfrom" />
         </tr>
-        <tr class="field odd">
+        <tr class="field even">
             <td class="name" i18n:translate="">To</td>
             <!-- <td class="value" tal:content="structure python: view.widgets['recipients'].render()" /> -->
             <td class="value" tal:content="python: ', '.join(view.mto)" />
         </tr>
-        <tr class="field even">
+        <tr class="field odd">
             <td class="name" i18n:translate="">Subject</td>
             <td class="value" tal:content="context/title" />
         </tr>
@@ -25,7 +25,7 @@
             <td class="name" i18n:translate="">Date</td>
             <td class="value" tal:content="python: toLocalizedTime(context.created(), long_format=1)" />
         </tr>
-        <tr class="field even">
+        <tr class="field odd">
             <td class="name" i18n:translate="">Body text</td>
             <td class="value" tal:content="structure python: view.widgets['body'].render()" />
         </tr>
