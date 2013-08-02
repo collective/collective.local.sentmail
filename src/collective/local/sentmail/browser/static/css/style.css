@@ -10,7 +10,7 @@
 }
 
 .portaltype-sent_mail table {
-	width: 40%;
+	width: 100%;
 }
 
 .portaltype-sent_mail table tr.field td {
@@ -21,7 +21,7 @@
 .portaltype-sent_mail table tr.field td.name {
 	font-weight: bold;
     text-align: right;
-    width: 15%;
+    width: 8%;
 }
 
 .portaltype-sent_mail table tr.field td.value {
