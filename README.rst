@@ -25,7 +25,3 @@ COMPATIBILITY
 -------------
 
 Plone 4.3
-
-
-TESTS
-https://travis-ci.org/collective/collective.local.sentmail
