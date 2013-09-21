@@ -11,7 +11,7 @@
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="published" i18n:attributes="title" title="Published">
-  <description>Visible to everyone, addable by everyone, editable by noone.</description>
+  <description>Visible to owner, editable by nobody.</description>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
