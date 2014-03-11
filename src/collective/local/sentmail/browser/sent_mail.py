@@ -14,14 +14,20 @@ class SentMailView(DefaultView):
             self.mfrom = formataddr((sender_fullname, sender_email))
         else:
             self.mfrom = sender_fullname
+
         self.mto = []
         for username in self.context.recipients:
             _recipient = api.user.get(username=username)
-            recipient_fullname = _recipient.getProperty('fullname', None) or \
-                                _recipient.getId()
-            recipient_email = _recipient.getProperty('email')
-            if recipient_email:
-                recipient = formataddr((recipient_fullname, recipient_email))
+            if _recipient is None:
+                recipient = username
             else:
-                recipient = recipient_fullname
+                recipient_fullname = _recipient.getProperty('fullname', None) or \
+                                    _recipient.getId()
+                recipient_email = _recipient.getProperty('email')
+
+                if recipient_email:
+                    recipient = formataddr((recipient_fullname, recipient_email))
+                else:
+                    recipient = recipient_fullname
+
             self.mto.append(recipient)
