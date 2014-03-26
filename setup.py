@@ -19,7 +19,7 @@ long_description = (
 
 setup(
     name='collective.local.sentmail',
-    version='1.1.dev0',
+    version='1.1',
     description="Keep history of emails sent by collective.local.sendto",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
