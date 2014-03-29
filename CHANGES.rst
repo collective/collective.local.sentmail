@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.1 (unreleased)
-----------------
+1.0.1 (2014-03-29)
+------------------
 
 - Fix bug when a recipient has been removed from portal.
   [cedricmessiant]
