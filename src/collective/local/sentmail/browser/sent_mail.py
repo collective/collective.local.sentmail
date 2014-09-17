@@ -1,33 +1,32 @@
 from plone import api
 from email.utils import formataddr
 from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 
 class SentMailView(BrowserView):
+    index = ViewPageTemplateFile('templates/sent_mail.pt')
+
+    def get_user_info(self, userid):
+        user = api.user.get(userid=userid)
+        if user is None:
+            recipient = userid
+        else:
+            recipient_fullname = user.getProperty('fullname', None) or \
+                    user.getUserName()
+            recipient_email = user.getProperty('email')
+            if recipient_email:
+                recipient = formataddr((recipient_fullname, recipient_email))
+            else:
+                recipient = recipient_fullname
+
+        return recipient
 
     def __call__(self):
-        creator = api.user.get(username=self.context.Creator())
-        sender_fullname = creator.getProperty('fullname', None) or creator.getId()
-        sender_email = creator.getProperty('email')
-        if sender_email:
-            self.mfrom = formataddr((sender_fullname, sender_email))
-        else:
-            self.mfrom = sender_fullname
-
+        self.mfrom = self.get_user_info(self.context.Creator())
         self.mto = []
         for userid in self.context.recipients:
-            recipient = api.user.get(userid=userid)
-            if recipient is None:
-                recipient = userid
-            else:
-                recipient_fullname = recipient.getProperty('fullname', None) or \
-                                    userid
-                recipient_email = recipient.getProperty('email')
-
-                if recipient_email:
-                    recipient = formataddr((recipient_fullname, recipient_email))
-                else:
-                    recipient = recipient_fullname
-
+            recipient = self.get_user_info(userid)
             self.mto.append(recipient)
 
-        return super(SentMailView, self).__call__()
+        return self.index()
