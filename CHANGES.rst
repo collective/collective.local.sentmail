@@ -5,7 +5,8 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Optimize display of recipients on a sent mail.
+  [vincentfretin]
 
 
 1.1 (2014-03-26)

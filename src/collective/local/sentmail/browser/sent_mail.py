@@ -1,12 +1,10 @@
 from plone import api
-from plone.dexterity.browser.view import DefaultView
 from email.utils import formataddr
+from Products.Five import BrowserView
 
+class SentMailView(BrowserView):
 
-class SentMailView(DefaultView):
-
-    def update(self):
-        super(SentMailView, self).update()
+    def __call__(self):
         creator = api.user.get(username=self.context.Creator())
         sender_fullname = creator.getProperty('fullname', None) or creator.getId()
         sender_email = creator.getProperty('email')
@@ -16,14 +14,14 @@ class SentMailView(DefaultView):
             self.mfrom = sender_fullname
 
         self.mto = []
-        for username in self.context.recipients:
-            _recipient = api.user.get(username=username)
-            if _recipient is None:
-                recipient = username
+        for userid in self.context.recipients:
+            recipient = api.user.get(userid=userid)
+            if recipient is None:
+                recipient = userid
             else:
-                recipient_fullname = _recipient.getProperty('fullname', None) or \
-                                    _recipient.getId()
-                recipient_email = _recipient.getProperty('email')
+                recipient_fullname = recipient.getProperty('fullname', None) or \
+                                    userid
+                recipient_email = recipient.getProperty('email')
 
                 if recipient_email:
                     recipient = formataddr((recipient_fullname, recipient_email))
@@ -31,3 +29,5 @@ class SentMailView(DefaultView):
                     recipient = recipient_fullname
 
             self.mto.append(recipient)
+
+        return super(SentMailView, self).__call__()
