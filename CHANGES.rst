@@ -5,6 +5,9 @@ Changelog
 1.2 (unreleased)
 ----------------
 
+- Remove css rules for table style.
+  [vincentfretin]
+
 - Optimize display of recipients on a sent mail.
   [vincentfretin]
 
